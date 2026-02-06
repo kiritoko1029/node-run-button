@@ -2,7 +2,7 @@
   "name": "node-run-button",
   "displayName": "Node Run Button",
   "description": "One-click run button for Node.js scripts in package.json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "chenxc",
   "engines": {
     "vscode": "^1.74.0"
@@ -146,8 +146,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "lint": "eslint src --ext ts",
-    "publish:vscode": "npx @vscode/vsce publish",
-    "publish:vsce": "npx ovsx publish"
+    "publish": "npx @vscode/vsce publish && npx ovsx publish"
   },
   "devDependencies": {
     "@types/node": "20.x",

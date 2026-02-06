@@ -1,6 +1,6 @@
 # Node Run Button
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER.node-run-button)
+[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER.node-run-button)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 [中文文档](README.zh-CN.md)

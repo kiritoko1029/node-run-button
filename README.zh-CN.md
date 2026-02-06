@@ -1,6 +1,6 @@
 # Node Run Button
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER.node-run-button)
+[![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER.node-run-button)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 一键运行 Node.js 项目中的 npm/yarn/pnpm/bun 脚本，让开发更高效。
