@@ -1,0 +1,155 @@
+{
+  "name": "node-run-button",
+  "displayName": "Node Run Button",
+  "description": "One-click run button for Node.js scripts in package.json",
+  "version": "1.0.0",
+  "publisher": "demo",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "node",
+    "npm",
+    "yarn",
+    "pnpm",
+    "scripts",
+    "run"
+  ],                                                                                                                                                                                                                                                                                                                         
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/node-run-button"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/node-run-button/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/node-run-button#readme",
+  "license": "MIT",                                                                                                                                                                                                                                                                                            
+  "activationEvents": [
+    "workspaceContains:package.json",
+    "onCommand:nodeRunButton.runRecentOrSelect",
+    "onCommand:nodeRunButton.pickAndRun",
+    "onCommand:nodeRunButton.runLast"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nodeRunButton.runRecentOrSelect",
+        "title": "Run Recent or Select",
+        "icon": "$(play)",
+        "category": "Node Run"
+      },
+      {
+        "command": "nodeRunButton.pickAndRun",
+        "title": "Select Script",
+        "icon": "$(chevron-down)",
+        "category": "Node Run"
+      },
+      {
+        "command": "nodeRunButton.runLast",
+        "title": "Run Last Script",
+        "icon": "$(debug-restart)",
+        "category": "Node Run"
+      },
+      {
+        "command": "nodeRunButton.refresh",
+        "title": "Refresh Scripts",
+        "category": "Node Run"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "nodeRunButton.runRecentOrSelect",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorTextFocus && !isInDiffEditor"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "nodeRunButton.runRecentOrSelect",
+          "when": "!isInDiffEditor",
+          "group": "navigation@100"
+        },
+        {
+          "command": "nodeRunButton.pickAndRun",
+          "when": "!isInDiffEditor",
+          "group": "navigation@101"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "nodeRunButton.runRecentOrSelect"
+        },
+        {
+          "command": "nodeRunButton.pickAndRun"
+        },
+        {
+          "command": "nodeRunButton.runLast",
+          "when": "nodeRunButton.hasLastScript"
+        },
+        {
+          "command": "nodeRunButton.refresh"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Node Run Button",
+      "properties": {
+        "nodeRunButton.packageManager": {
+          "type": "string",
+          "default": "auto",
+          "enum": ["auto", "npm", "yarn", "pnpm", "bun"],
+          "description": "Package manager to run scripts. 'auto' detects using package.json/packageManager and lockfiles."
+        },
+        "nodeRunButton.packageJsonStrategy": {
+          "type": "string",
+          "default": "nearest",
+          "enum": ["nearest", "workspaceRoot"],
+          "description": "Which package.json to use. 'nearest' finds the closest ancestor package.json for the active file."
+        },
+        "nodeRunButton.terminal.name": {
+          "type": "string",
+          "default": "Node Run",
+          "description": "Integrated terminal name used by Node Run Button."
+        },
+        "nodeRunButton.terminal.reuse": {
+          "type": "boolean",
+          "default": true,
+          "description": "Reuse a dedicated terminal instead of creating a new one each run."
+        },
+        "nodeRunButton.quickPick.recentLimit": {
+          "type": "number",
+          "default": 5,
+          "minimum": 0,
+          "maximum": 10,
+          "description": "How many recently-run scripts to pin at the top of the list."
+        },
+        "nodeRunButton.quickPick.showScriptBody": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the script body as the QuickPick detail line."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  }
+}
